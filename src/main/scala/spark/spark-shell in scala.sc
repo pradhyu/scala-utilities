@@ -9,9 +9,13 @@ conf.setMaster("local[*]")
 conf.setAppName("Simple Application")
 
 val sc = new SparkContext(conf)
-val logFile = "/Users/pkshrestha/workspace/scala-utilities/src/example.html"
+val logFile = "/Users/pkshrestha/workspace/scala-utilities/src/main/resources/spark/ccioph-v240r0-f1.txt"
 val logData = sc.textFile(logFile).cache()
 val numAs = logData.filter(line => line.contains("a")).count()
 val numBs = logData.filter(line => line.contains("b")).count()
 
 println(s"Lines with a: $numAs, Lines with b: $numBs")
+
+val numWithDate = logData.filter(line => line.contains("20180101")).count()
+
+println(s"lines with date: $numWithDate")
