@@ -7,8 +7,9 @@ import akka.actor._
 
 // run shell application that runs for ever and listens to a socket
 //"pkill goTcpServer" !!
-val serverAppPath="/Users/pkshrestha/workspace/scala-utilities/src/main/scala/goTcpServer"
+val serverAppPath = "/Users/pkshrestha/workspace/scala-utilities/src/main/scala/goTcpServer"
 //serverAppPath !!
+
 
 // need to use aka actor to handle the concurrency.
 // Few classes to pass
@@ -19,7 +20,7 @@ case class Result(value: String) extends ProcessMessage
 
 def doWork(start: Int, nrOfElements: Int): String = {
   println("doWork!!!")
- // Thread.sleep(1000)
+  Thread.sleep(1000)
   s"Received parameters $start, $nrOfElements"
 }
 
@@ -62,4 +63,8 @@ val master = system.actorOf(Props(new Master(
 // start the calculation
 master ! Calculate
 
-println("I am done")
+
+
+
+
+

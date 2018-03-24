@@ -21,4 +21,6 @@ libraryDependencies ++= Seq(
 // spark needs scala 2.11.X
 libraryDependencies += "org.apache.spark" %% "spark-core" % "2.2.1"
 
+// for scala test
+libraryDependencies += "org.scalatest" % "scalatest_2.11" % "3.0.5" % "test"
 

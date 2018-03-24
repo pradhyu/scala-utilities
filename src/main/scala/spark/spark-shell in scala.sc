@@ -2,6 +2,7 @@
 // libraryDependencies += "org.apache.spark" %% "spark-core" % "2.1.0"
 // and run the worksheet in repl mode
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 val conf = new SparkConf()
@@ -19,3 +20,9 @@ println(s"Lines with a: $numAs, Lines with b: $numBs")
 val numWithDate = logData.filter(line => line.contains("20180101")).count()
 
 println(s"lines with date: $numWithDate")
+
+
+// now playing with the data, load it to struct??
+//RDD
+val logDataRdd: RDD[String] =sc.textFile(logFile)
+
