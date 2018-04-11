@@ -22,5 +22,13 @@ libraryDependencies ++= Seq(
 libraryDependencies += "org.apache.spark" %% "spark-core" % "2.2.1"
 
 // for scala test
+// specify this dependency is for test to make ensime not show 
+// scala test as errors in the editor o
 libraryDependencies += "org.scalatest" % "scalatest_2.11" % "3.0.5" % "test"
+
+// Mysql driver 
+val mysql = "mysql" % "mysql-connector-java" % "5.1.12"
+libraryDependencies += mysql
+
+
 
