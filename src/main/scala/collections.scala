@@ -35,13 +35,37 @@ object collectionListArrayBuffer {
   assert(Set(1,2,3)== collection.mutable.LinkedHashSet(1,3,2))
 
 
-
   /*
    Arrays Don't behave the way list, seq and set behaves 
    */
 
-  import scala.collection.mutable.ArrayBuffer
+  // works differently in scala and java
+  java.util.Arrays.equals(Array(1,2), Array(1,2)) // => true
+  Array(1,2).equals(Array(1,2))// => false
+  assert(Array(1,2)==Array(1,2))//=>false
+  assert(List(1,2)==Array(1,2))//=>false
 
+  // WrappedArray comes to solution 
+  // There is an implicit conversion from array to wrapped array
+  // which is a sequence 
+  import scala.collection.mutable.WrappedArray
+  (Array(1,2,3): WrappedArray[Int]) == (Array(1,2,3): WrappedArray[Int])
+
+  // fun stuffs this works when you pass array to anything that expects seq 
+  // due to implicits
+  def sameStuff(s1: Seq[Int], s2: Seq[Int])= s1==s2
+  sameStuff(Array(1,2),Array(1,2))
+  // another way is to use sameElements
+  assert (Array(1,2,3) sameElements Array(1,2,3)) //=> true however order matters 
+
+/*
+ Nested arrays
+ Both solutions above only work if arrays are not nested. Consider:
+ */
+  Array(Array(11), Array(21, 22)).deep == Array(Array(11), Array(21, 22)).deep
+
+
+  import scala.collection.mutable.ArrayBuffer
   val fruits = ArrayBuffer("apple", "orange", "cherry")
   // simple make string
   assert(fruits.mkString(",") == "apple,orange,cherry")
@@ -54,9 +78,6 @@ object collectionListArrayBuffer {
   // or you can  use sameElements
   assert (fruits.toArray.sameElements(Array("apple","orange","cherry")))
 
-  // works differently in scala and java
-  java.util.Arrays.equals(Array(1,2), Array(1,2)) // => true
-  Array(1,2).equals(Array(1,2))// => false
 
 
 
