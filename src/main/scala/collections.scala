@@ -56,7 +56,7 @@ object collectionListArrayBuffer {
   def sameStuff(s1: Seq[Int], s2: Seq[Int])= s1==s2
   sameStuff(Array(1,2),Array(1,2))
   // another way is to use sameElements
-  assert (Array(1,2,3) sameElements Array(1,2,3)) //=> true however order matters 
+  assert (Array(1,2,3) sameElements Array(1,2,3)) //=> true however order matters
 
 /*
  Nested arrays
@@ -77,8 +77,6 @@ object collectionListArrayBuffer {
   assert (fruits.toArray.deep ==Array("apple","orange","cherry").deep)
   // or you can  use sameElements
   assert (fruits.toArray.sameElements(Array("apple","orange","cherry")))
-
-
 
 
 
