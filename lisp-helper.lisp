@@ -7,7 +7,6 @@
 (defun read-file-as-lisp-obj (filename)
   (with-open-file (stream filename) 
     (read filename)))
-
-
+;; TODO fix the function
 (get-file "src/main/scala/lisp-test.lisp")
 
